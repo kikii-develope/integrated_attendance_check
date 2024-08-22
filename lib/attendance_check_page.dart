@@ -9,22 +9,24 @@ class AttendanceCheckPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          const Expanded(
-            flex: 2,
-            child: Header()
-          ),
-          Expanded(
-            flex: 13,
-            child: Container()
-          ),
-          const Expanded(
-            flex: 5,
-            child: Footer()
-          )
-        ],
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            const Expanded(
+              flex: 2,
+              child: Header()
+            ),
+            Expanded(
+              flex: 13,
+              child: Container()
+            ),
+            const Expanded(
+              flex: 5,
+              child: Footer()
+            )
+          ],
+        ),
       ),
     );
   }
