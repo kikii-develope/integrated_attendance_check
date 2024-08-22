@@ -39,7 +39,7 @@ class Footer extends StatelessWidget {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                         text: "앱에 로그인하여\n",
-                        style: TextStyle(fontSize: 20.sp, color: Colors.black),
+                        style: TextStyle(fontSize: 20.sp, color: Colors.black, height: 1.5),
                         children: const [
                           TextSpan(
                               text: "[출퇴근관리] 의\n[출근하기]로\n",
@@ -59,7 +59,7 @@ class Footer extends StatelessWidget {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                         text: "태블릿 화면 가운데 있는\n인증번호를\n",
-                        style: TextStyle(fontSize: 20.sp, color: Colors.black, fontWeight: FontWeight.w600),
+                        style: TextStyle(fontSize: 20.sp, color: Colors.black, fontWeight: FontWeight.w600, height: 1.5),
                         children: const [
                           TextSpan(
                               text: "확인 후 입력해주세요.",
@@ -77,11 +77,11 @@ class Footer extends StatelessWidget {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                         text: "입력한 숫자와 화면에 표시된 숫자가\n일치하는 지 확인한 다음,\n",
-                        style: TextStyle(fontSize: 20.sp, color: Colors.black, fontWeight: FontWeight.w600),
+                        style: TextStyle(fontSize: 20.sp, color: Colors.black, fontWeight: FontWeight.w600, height: 1.5),
                         children: const [
                           TextSpan(text: "[출근하기]"),
                           TextSpan(
-                              text: "버튼을 눌러주세요..",
+                              text: " 버튼을 눌러주세요..",
                               style: TextStyle(fontWeight: FontWeight.w400)),
                         ]))
               ],

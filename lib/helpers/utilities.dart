@@ -1,4 +1,4 @@
-List<String> weekdays = ['일','월', '화', '수', '목', '금', '토'];
+final List<String> weekdays = ['일','월', '화', '수', '목', '금', '토'];
 
 String convertDateString (DateTime time) {
   int month = time.month;
