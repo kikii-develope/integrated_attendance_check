@@ -14,16 +14,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-        designSize: const Size(768, 1024),
-        builder: (_, child) {
-          return MaterialApp(
-              title: 'smartTS_attendance_check',
-              theme: ThemeData(
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-                useMaterial3: true,
-              ),
-              home: const AttendanceCheckPage());
-        });
+    return OrientationBuilder(
+      builder: (context, orientation) {
+        print(orientation);
+        return ScreenUtilInit(
+            designSize: orientation == Orientation.portrait ?  const Size(768, 1024) : const Size(1200, 800),
+            builder: (_, child) {
+              return MaterialApp(
+                  title: 'smartTS_attendance_check',
+                  theme: ThemeData(
+                    colorScheme: ColorScheme.fromSeed(
+                        seedColor: Colors.deepPurple),
+                    useMaterial3: true,
+                  ),
+                  home: const AttendanceCheckPage());
+            });
+      }
+    );
   }
 }

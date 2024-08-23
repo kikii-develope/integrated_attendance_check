@@ -103,7 +103,7 @@ class _AttendanceCheckPageState extends State<AttendanceCheckPage> {
                       ) : Text(model?.code ?? "오류가 발생했습니다.",
                           style: TextStyle(
                               fontSize: 64.sp,
-                              letterSpacing: 50,
+                              letterSpacing: 15,
                               fontWeight: FontWeight.w800)),
                     ),
                     TextButton(
