@@ -50,7 +50,7 @@ class _HeaderState extends State<Header> {
               builder: (context, snapshot) {
                 final time = snapshot.data ?? DateTime.now();
                 return Text(
-                  convertDateString(time),
+                  convertDateString(time, false),
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 20.sp,
