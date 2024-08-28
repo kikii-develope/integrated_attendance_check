@@ -1,14 +1,15 @@
 import 'dart:convert';
 
-class ResponseModel {
+class ResponseModel<T> {
   int status;
-  Map<String, dynamic> object;
+  T object;
   String message;
 
   ResponseModel(
       {required this.status, required this.object, required this.message});
 
   factory ResponseModel.fromJson(String body) {
+
     Map<String, dynamic> parsedJson = jsonDecode(body);
 
     return ResponseModel(

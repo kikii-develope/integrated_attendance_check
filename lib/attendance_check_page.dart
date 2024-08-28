@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:attendance_check/footer.dart';
 import 'package:attendance_check/header.dart';
@@ -7,6 +8,7 @@ import 'package:attendance_check/helpers/env_provider.dart';
 import 'package:attendance_check/helpers/utilities.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 import 'helpers/attendance_code_model.dart';
 
@@ -22,9 +24,10 @@ class _AttendanceCheckPageState extends State<AttendanceCheckPage> {
   bool isLoading = false;
 
   late String serverUri;
-  AttendanceCodeModel? model;
+  String? model;
 
   Timer? _timer;
+  bool _isTimerStarted = false;
 
   @override
   void initState() {
@@ -35,11 +38,16 @@ class _AttendanceCheckPageState extends State<AttendanceCheckPage> {
   @override
   void didChangeDependencies() {
     serverUri = EnvProvider.of(context)!.instance.getServerUri();
-    _timer = Timer.periodic(Duration(seconds: 10), (timer) {
-      _fetchData(serverUri);
-    });
-
     super.didChangeDependencies();
+
+    if(!_isTimerStarted) {
+      _fetchData(serverUri);
+      _timer = Timer.periodic(const Duration(hours: 1), (timer) {
+        _fetchData(serverUri);
+      });
+
+      _isTimerStarted = true;
+    }
   }
 
   @override
@@ -53,11 +61,25 @@ class _AttendanceCheckPageState extends State<AttendanceCheckPage> {
       setState(() {
         isLoading = true;
       });
-      AttendanceCodeModel m = await getCurrentAttendanceCode(uri);
+      String m = await getCurrentAttendanceCode(uri);
       setState(() {
         isLoading = false;
         model = m;
         lastFetchedTime = DateTime.now();
+      });
+    } on ClientException catch (ce) {
+      print(ce);
+      setState(() {
+        isLoading = false;
+        model = '네트워크 연결을\n 확인해주세요.';
+        lastFetchedTime = null;
+      });
+    } on SocketException catch (se) {
+      print(se);
+      setState(() {
+        isLoading = false;
+        model = '네트워크 연결을\n 확인해주세요.';
+        lastFetchedTime = null;
       });
     } catch (e) {
       print(e);
@@ -100,7 +122,7 @@ class _AttendanceCheckPageState extends State<AttendanceCheckPage> {
                       padding: EdgeInsets.only(bottom: 40.sp),
                       child: isLoading ? const CircularProgressIndicator(
                         color: Color(0xff142948),
-                      ) : Text(model?.code ?? "오류가 발생했습니다.",
+                      ) : Text(model ?? "오류가 발생했습니다.",
                           style: TextStyle(
                               fontSize: 64.sp,
                               letterSpacing: 15,
