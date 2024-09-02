@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = https://github.com/kikii-InseokLee/smartTS_attendance_check_service.git
+	fetch = +refs/*:refs/*
+	mirror = true
+	pushurl = https://github.com/kikii-develope/integrated_attendance_check.git

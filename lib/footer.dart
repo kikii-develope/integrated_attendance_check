@@ -1,25 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Footer extends StatelessWidget {
-  const Footer({super.key});
+class DottedTitle extends StatelessWidget {
+  const DottedTitle({super.key, required this.index, required this.orientation});
+  final int index;
+  final Orientation orientation;
 
-  Widget DottedTitle({required int index, required Orientation orientation}) {
+  @override
+  Widget build(BuildContext context) {
     return Container(
-      width: orientation == Orientation.portrait ? 40.sp : 24.sp,
-      height: orientation == Orientation.portrait ? 40.sp : 24.sp,
+      width: orientation == Orientation.portrait ? 64.sp : 24.sp,
+      height: orientation == Orientation.portrait ? 64.sp : 24.sp,
       margin: EdgeInsets.only(bottom: orientation == Orientation.portrait ? 16.sp : 8.sp),
       alignment: Alignment.center,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25.sp),
+          borderRadius: BorderRadius.circular(orientation == Orientation.portrait ? 36.sp : 25.sp,),
           color: const Color(0xff142948)),
       child: Text(
         index.toString(),
+        textAlign: TextAlign.center,
         style: TextStyle(
             color: Colors.white, fontSize: orientation == Orientation.portrait ? 24.sp : 16.sp, fontWeight: FontWeight.w600),
       ),
     );
   }
+}
+
+
+class Footer extends StatelessWidget {
+  const Footer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +51,7 @@ class Footer extends StatelessWidget {
                         textAlign: TextAlign.center,
                         text: TextSpan(
                             text: "앱에 로그인하여\n",
-                            style: TextStyle(fontSize: 16.sp, color: Colors.black, height: 1.5),
+                            style: TextStyle(fontSize: orientation == Orientation.portrait ? 24.sp : 16.sp, color: Colors.black, height: 1.5),
                             children: [
                               TextSpan(
                                   text: "[출퇴근관리] 의\n[출근하기]로${orientation == Orientation.portrait ? '\n' : ' '}",
@@ -75,7 +84,7 @@ class Footer extends StatelessWidget {
                 flex: 1,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [DottedTitle(index: 3, orientation: orientation),
+                  children: [DottedTitle(index: 3, orientation: orientation,),
                     RichText(
                         textAlign: TextAlign.center,
                         text: TextSpan(
