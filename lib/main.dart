@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
-  runApp(EnvProvider(buildType: BuildType.dev, child: const MyApp()));
+  runApp(EnvProvider(buildType: BuildType.prod, child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
