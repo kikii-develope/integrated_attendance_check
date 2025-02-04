@@ -5,7 +5,7 @@ class Env {
 
   static get instance => _instance;
 
-  late BuildType _buildType;
+  late BuildType _buildType;  
 
   Env(BuildType buildType) {
     _buildType = buildType;

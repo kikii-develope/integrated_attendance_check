@@ -6,6 +6,7 @@ import 'package:attendance_check/header.dart';
 import 'package:attendance_check/helpers/apis.dart';
 import 'package:attendance_check/helpers/env_provider.dart';
 import 'package:attendance_check/helpers/utilities.dart';
+import 'package:attendance_check/home.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -30,7 +31,6 @@ class _AttendanceCheckPageState extends State<AttendanceCheckPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -115,6 +115,21 @@ class _AttendanceCheckPageState extends State<AttendanceCheckPage> {
                                     fontSize: 32.sp, fontWeight: FontWeight.w600),
                               ),
                             ),
+                            TextButton(
+                                  style: TextButton.styleFrom(
+                                      foregroundColor: Colors.white,
+                                      backgroundColor: const Color(0xff142948),
+                                      fixedSize: Size(232.sp, 48.sp),
+                                      textStyle: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(4.sp))
+                                      )
+                                  ),
+                                  onPressed: () async {
+                                    Navigator.push(context, 
+                                    MaterialPageRoute(builder: (context) => HomePage()));
+                                  },
+                                  child: const Text('QR 이동')),
                               Padding(
                                 padding: EdgeInsets.only(bottom: 16.sp),
                                 child: Text(
@@ -136,6 +151,7 @@ class _AttendanceCheckPageState extends State<AttendanceCheckPage> {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                            
                               TextButton(
                                   style: TextButton.styleFrom(
                                       foregroundColor: Colors.white,
@@ -156,7 +172,8 @@ class _AttendanceCheckPageState extends State<AttendanceCheckPage> {
                                   '인증번호를 동일하게 눌렀을 때\n 출/퇴근처리가 되지 않는 경우, \n 위의 새로고침 시각을 확인하시고\n 새로고침 버튼을 눌러주세요.'
                                   ,style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),
                                 ),
-                              )
+                              ),
+                            
                             ],
                           )
                         ],
