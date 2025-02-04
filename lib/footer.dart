@@ -55,7 +55,7 @@ class Footer extends StatelessWidget {
                             children: [
                               TextSpan(
                                   text: "[출퇴근관리] 의\n[출근하기]로${orientation == Orientation.portrait ? '\n' : ' '}",
-                                  style: TextStyle(fontWeight: FontWeight.w600)),
+                                  style: const TextStyle(fontWeight: FontWeight.w600)),
                               const TextSpan(text: "들어가주세요.")
                             ]))
                   ],

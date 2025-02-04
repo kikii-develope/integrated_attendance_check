@@ -11,6 +11,5 @@ String convertDateString (DateTime time, bool isLinearString) {
   String hourStr = hour < 10 ? '0$hour' : hour.toString();
   String minuteStr = minute < 10 ? '0$minute' : minute.toString();
 
-
   return "$month월 $day일 ($weekDay)${!isLinearString ? '\n' : ' '}$amPm ${(amPm == '오후' && hour == 0) ? 12 : hourStr}:$minuteStr";
 }

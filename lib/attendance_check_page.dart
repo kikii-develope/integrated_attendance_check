@@ -10,7 +10,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
-import 'helpers/attendance_code_model.dart';
 
 class AttendanceCheckPage extends StatefulWidget {
   const AttendanceCheckPage({super.key});

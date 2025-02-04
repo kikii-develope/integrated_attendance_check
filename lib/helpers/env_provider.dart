@@ -1,6 +1,7 @@
 import 'package:attendance_check/helpers/env.dart';
 import 'package:flutter/material.dart';
 
+@immutable
 class EnvProvider extends InheritedWidget {
   EnvProvider({super.key, required this.buildType, required super.child, });
 
