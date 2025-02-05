@@ -1,3 +1,5 @@
+import 'package:geolocator/geolocator.dart';
+
 enum BuildType {dev, prod}
 
 class Env {
@@ -5,10 +7,13 @@ class Env {
 
   static get instance => _instance;
 
-  late BuildType _buildType;  
+  late BuildType _buildType;
+  late Position _position;
+  Position get position => _position;
 
-  Env(BuildType buildType) {
+  Env(BuildType buildType, Position position) {
     _buildType = buildType;
+    _position = position;
   }
 
   String getServerUri() {
@@ -19,8 +24,8 @@ class Env {
     }
   }
 
-  factory Env.fromBuildType(BuildType buildType) {
-    _instance ??= Env(buildType);
+  factory Env.fromBuildType(BuildType buildType, Position pos) {
+    _instance ??= Env(buildType, pos);
     return _instance!;
   }
 }
