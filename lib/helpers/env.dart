@@ -16,6 +16,10 @@ class Env {
     _position = position;
   }
 
+  void setPosition (Position position) {
+    _position = position;
+  }
+
   String getServerUri() {
     if(_buildType == BuildType.prod) {
       return 'https://api.kiki-bus.com';

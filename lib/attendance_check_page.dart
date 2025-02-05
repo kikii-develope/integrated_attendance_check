@@ -115,21 +115,6 @@ class _AttendanceCheckPageState extends State<AttendanceCheckPage> {
                                     fontSize: 32.sp, fontWeight: FontWeight.w600),
                               ),
                             ),
-                            TextButton(
-                                  style: TextButton.styleFrom(
-                                      foregroundColor: Colors.white,
-                                      backgroundColor: const Color(0xff142948),
-                                      fixedSize: Size(232.sp, 48.sp),
-                                      textStyle: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(Radius.circular(4.sp))
-                                      )
-                                  ),
-                                  onPressed: () async {
-                                    Navigator.push(context, 
-                                    MaterialPageRoute(builder: (context) => HomePage()));
-                                  },
-                                  child: const Text('QR 이동')),
                               Padding(
                                 padding: EdgeInsets.only(bottom: 16.sp),
                                 child: Text(
